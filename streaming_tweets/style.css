@@ -1,0 +1,5 @@
+ul, li, p { list-style:none; margin:0; padding:0; }
+#pg { margin:0 auto; width:960px; }
+.tweet { border-bottom:solid 1px #999; padding:10px 0; }
+.avatar { float:left; }
+.text-wrap { margin:0 0 0 100px; min-height:75px; }

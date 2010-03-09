@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<title>nodejs demo - Twitter Streaming API</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="pg">
+	<h1>Live Twitter Stream - http://67.23.17.43:8000/</h1>
+	<div id="tweet-holder">
+		<ul></ul>
+	</div>
+</div>
+<script type="text/html" id="tweet_tmpl">
+<li>
+<div class="tweet">
+	<div class="avatar">
+		<img src="http://img.tweetimag.es/i/<%=user.screen_name%>_b" alt="" />
+	</div>
+	<div class="text-wrap">
+		<p><strong><a class="from_user" href="http://twitter.com/<%=user.screen_name%>" target="_blank"><%=user.screen_name%></a></strong></p>
+		<p><%=ify.clean(text)%></p>
+		<abbr class="created_at" data-datetime="<%=created_at%>"><%=created_at%></abbr>
+	</div>
+</div>
+</li>
+</script>
+<script type="text/javascript" src="libclient/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="libclient/jquery.tmpl.js"></script>
+<script type="text/javascript" src="libclient/ify.js"></script>
+<script type="text/javascript" src="client.js"></script>
+</body>

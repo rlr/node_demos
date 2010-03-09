@@ -1,0 +1,13 @@
+Streaming Tweets
+The server receieves tweets from the Twitter Streaming API and pushes them to long polling clients. 
+
+Requirements:
+* node.js (tested with v0.1.30)
+
+To Run:
+* update twittercred.js with your Twitter credentials
+* node server.js <optional_keyword>
+
+Inspired by and based on:
+* node_chat: http://github.com/ry/node_chat
+* twitter-nodejs-websocket: http://github.com/andregoncalves/twitter-nodejs-websocket
