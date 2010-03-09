@@ -7,9 +7,6 @@ var sys = require('sys'),
     qs = require("querystring"),
     fu = require("./libserver/fu");
 
-// Command line args
-var KEYWORD = process.ARGV[2] || "iphone";
-
 /*
  * Live Value
  */
