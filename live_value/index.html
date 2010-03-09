@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<title>nodejs demo - live value</title>
+<style type="text/css">
+#live-value { font-size:150px; text-align:center; }
+</style>
+</head>
+<body>
+<div id="live-value">42</div>
+<script type="text/javascript" src="libclient/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+(function(){
+function updateContent() {
+    $.ajax({
+        url: '/listen',
+        dataType: 'json',
+        success: function(data) {
+            if(data && data.value) {
+                $('#live-value').html(data.value);
+            }
+            updateContent();
+        } 
+    });
+}
+updateContent();
+}());
+</script>
+</body>
