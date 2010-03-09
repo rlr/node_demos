@@ -7,6 +7,7 @@ Requirements:
 To Run:
 * update twittercred.js with your Twitter credentials
 * node server.js <optional_keyword>
+* go to http://localhost:8000/ and watch the tweets come in
 
 Inspired by and based on:
 * node_chat: http://github.com/ry/node_chat

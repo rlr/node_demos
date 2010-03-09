@@ -96,15 +96,22 @@ headers['Host'] = "stream.twitter.com";
 
 // Connection to Twitter's streaming API
 var twitter = http.createClient(80, "stream.twitter.com");
-var request = twitter.request("GET", "/1/statuses/filter.json?track=" + KEYWORD, headers);
 
-request.addListener('response', function(response){
-    response.setBodyEncoding("utf8");
-    response.addListener("data", function(chunk){
-        store.appendChunk(chunk);
+function startStreamingAPIClient() {
+    var request = twitter.request("GET", "/1/statuses/filter.json?track=" + KEYWORD, headers);
+    request.addListener('response', function(response){
+        response.setBodyEncoding("utf8");
+        response.addListener("data", function(chunk){
+            store.appendChunk(chunk);
+        });
+        response.addListener("end", function(chunk){
+            setTimeout(startStreamingAPIClient,5000); // wait 5 secsand reopen
+        });
     });
-});
-request.close();
+    request.close();
+    sys.puts("Twitter Streaming API client listening for: " + KEYWORD);
+}
+startStreamingAPIClient();
 
 /*
  * HTTP Server
@@ -139,5 +146,4 @@ fu.get("/fetch", function(req, res){
     });
 });
 
-sys.puts("Twitter Streaming API client listening for: " + KEYWORD);
 sys.puts("Server running at http://127.0.0.1:" + PORT + "/");
